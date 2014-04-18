@@ -4,8 +4,8 @@ using System.Collections;
 public class Spell : MonoBehaviour {
 
 	public Projectile projectile;
-
 	public float distance;
+	public PlayerMotor motor;
 
 	void Update () {
 
@@ -17,5 +17,6 @@ public class Spell : MonoBehaviour {
 	void Cast() {
 		Projectile projectile = (Projectile)GameObject.Instantiate(this.projectile, transform.position, transform.rotation);
 		projectile.distance = this.distance;
+		projectile.direction = motor.facing;
 	}
 }

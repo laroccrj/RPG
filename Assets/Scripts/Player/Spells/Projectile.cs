@@ -5,19 +5,19 @@ public class Projectile : MonoBehaviour {
 
 	public float distance;
 	public float speed;
+	public Vector3 direction;
 
 	private Vector3 startPosition;
 	private float difference;
 	
 	void Start () {
 		startPosition = transform.position;
-		Vector3 endPosition = transform.position + (transform.TransformDirection(Vector3.forward) * distance);
+		Vector3 endPosition = transform.position + (direction * distance);
 		difference = Vector3.Distance(startPosition, endPosition);
 	}
 
 	void Update () {
-		Vector3 forward = transform.TransformDirection(Vector3.forward);
-		transform.Translate(forward * this.speed * Time.deltaTime);
+		transform.Translate(direction * this.speed * Time.deltaTime);
 
 		if(Vector3.Distance(this.startPosition, transform.position) > this.difference) {
 			Destroy(gameObject);

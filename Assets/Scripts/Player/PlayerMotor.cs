@@ -4,45 +4,33 @@ using System.Collections;
 public class PlayerMotor : MonoBehaviour {
 
 	public float speed;
+	public Vector3 facing = Vector3.forward;
 
 	void Update () {
 
 		if(Input.GetKey(KeyCode.UpArrow)) {
-			this.moveUp();
+			move(Vector3.forward);
 		}
 
 		if(Input.GetKey(KeyCode.DownArrow)) {
-			this.moveDown();
+			move(Vector3.back);
 		}
 
 		if(Input.GetKey(KeyCode.LeftArrow)) {
-			this.moveLeft();
+			move(Vector3.left);
 		}
 		
 		if(Input.GetKey(KeyCode.RightArrow)) {
-			this.moveRight();
+			move(Vector3.right);
 		}
 
 	}
 
-	void moveUp() {
-		movement(Vector3.forward);
-	}
-
-	void moveDown() {
-		movement(Vector3.back);
-	}
-
-	void moveLeft() {
-		movement(Vector3.left);
-	}
-
-	void moveRight() {
-		movement(Vector3.right);
-	}
-
-	void movement(Vector3 direction) {
+	void move(Vector3 direction) {
 		transform.Translate(direction * speed * Time.deltaTime);
+
+		if(!Input.GetKey(KeyCode.LeftShift))
+			this.facing = direction;
 	}
 
 }
