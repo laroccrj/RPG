@@ -23,4 +23,8 @@ public class Projectile : MonoBehaviour {
 			Destroy(gameObject);
 		}
 	}
+
+	void OnTriggerEnter(Collider other) {
+		other.SendMessage("Damage", 10, SendMessageOptions.DontRequireReceiver);
+	}
 }
