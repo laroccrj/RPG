@@ -11,6 +11,7 @@ public class Projectile : MonoBehaviour {
 	private float difference;
 	
 	void Start () {
+		direction = Vector3.forward;
 		startPosition = transform.position;
 		Vector3 endPosition = transform.position + (direction * distance);
 		difference = Vector3.Distance(startPosition, endPosition);

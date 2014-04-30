@@ -5,6 +5,7 @@ public class Spell : MonoBehaviour {
 
 	public Projectile projectile;
 	public float distance;
+	public int angel;
 	public PlayerMotor motor;
 
 	void Update () {
@@ -15,8 +16,17 @@ public class Spell : MonoBehaviour {
 	}
 
 	void Cast() {
+
+		if(this.angel == 0) {
+			SpawnProjectile(motor.facing);
+		}
+		else {
+			 
+		}
+	}
+
+	void SpawnProjectile(Vector3 direction) {
 		Projectile projectile = (Projectile)GameObject.Instantiate(this.projectile, transform.position, transform.rotation);
 		projectile.distance = this.distance;
-		projectile.direction = motor.facing;
 	}
 }
